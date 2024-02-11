@@ -53,6 +53,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\MainPage.xaml.cs">
+	    <DependentUpon>MainPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\DrawPage.xaml.cs">
 	    <DependentUpon>DrawPage.xaml</DependentUpon>
 	  </Compile>
@@ -60,6 +63,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\AddStudent.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\MainPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

@@ -8,7 +8,7 @@
 
     <ShellContent
         Title="Add new student"
-        ContentTemplate="{DataTemplate views:DrawPage}"
-        Route="Draw Student" />
+        ContentTemplate="{DataTemplate views:MainPage}"
+        Route="Draw Student App" />
 
 </Shell>

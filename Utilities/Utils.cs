@@ -51,7 +51,7 @@ namespace LosowanieUcznia.Utilities
                 foreach (string line in lines)
                 {
                     string[] attributes = line.Split(',');
-                    Student student = new Student(Int32.Parse(attributes[0]), attributes[1], attributes[2], attributes[3]);
+                    Student student = new Student(Int32.Parse(attributes[0]), attributes[1], attributes[2], attributes[3], Int32.Parse(attributes[4]), Boolean.Parse(attributes[5]));
                     students.Add(student);
                 }
             }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LosowanieUcznia.Views.MainPage"
+             Title="MainPage">
+    
+    <VerticalStackLayout>
+
+        <Label
+            Text="Wybierz klasę do losowania" />
+
+        <Picker
+            x:Name="ClassPicker"
+            SelectedIndexChanged="ClassPicker_Changed" />
+
+        <Button
+            Text="Zatwierdź"
+            Clicked="ShowClassButton_Clicked" />
+
+    </VerticalStackLayout>
+    
+</ContentPage>

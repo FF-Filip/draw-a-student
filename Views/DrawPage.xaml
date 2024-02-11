@@ -6,10 +6,6 @@
     <ScrollView>
         <VerticalStackLayout>
 
-            <Picker 
-                x:Name="ClassPicker"
-                SelectedIndexChanged="ClassPicker_Changed"/>
-
             <Label
                 Text="Wylosuj ucznia" />
 
