@@ -3,20 +3,41 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LosowanieUcznia.Views.MainPage"
              Title="MainPage">
+
+    <ContentPage.Resources>
+        <StyleSheet Source="/Resources/Styles/MainPageStyle.css" />
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Dodaj ucznia" Clicked="AddStudent_Clicked" IconImageSource="{FontImage Glyph=+}" />
+    </ContentPage.ToolbarItems>
+
+    <HorizontalStackLayout
+        HorizontalOptions="Center">
     
-    <VerticalStackLayout>
+        <VerticalStackLayout
+            VerticalOptions="Center">
 
-        <Label
-            Text="Wybierz klasę do losowania" />
+            <Label
+                Text="Wybierz klasę do losowania" />
 
-        <Picker
-            x:Name="ClassPicker"
-            SelectedIndexChanged="ClassPicker_Changed" />
+            <Picker
+                StyleId="PickerStyling"
+                x:Name="ClassPicker"
+                HorizontalOptions="Center"
+                SelectedIndexChanged="ClassPicker_Changed" />
 
-        <Button
-            Text="Zatwierdź"
-            Clicked="ShowClassButton_Clicked" />
+            <Button
+                Text="Zatwierdź"
+                Clicked="ShowClassButton_Clicked" />
 
-    </VerticalStackLayout>
-    
+        </VerticalStackLayout>
+
+
+        <VerticalStackLayout>
+
+        </VerticalStackLayout>
+
+    </HorizontalStackLayout>
+
 </ContentPage>

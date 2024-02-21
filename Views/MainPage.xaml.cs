@@ -1,4 +1,5 @@
-using LosowanieUcznia.Models;
+ï»¿using LosowanieUcznia.Models;
+using System.Diagnostics;
 
 namespace LosowanieUcznia.Views;
 
@@ -9,18 +10,15 @@ public partial class MainPage : ContentPage
     public MainPage()
 	{
 		InitializeComponent();
-        List<Student> studentsList = Utilities.Utils.ReadItems();
-        List<string> classes = new List<string>();
-
-        foreach (Student student in studentsList)
-        {
-            if(!classes.Contains(student.Class))
-            {
-                classes.Add(student.Class);
-            }
-        }
-        ClassPicker.ItemsSource = classes;
+        Debug.WriteLine("Pliki aplikacji: " + FileSystem.Current.AppDataDirectory);
 	}
+
+    protected override void OnAppearing()
+    {
+        Classes.allClasses = Utilities.Utils.ReadClasses();
+
+        ClassPicker.ItemsSource = Classes.allClasses;
+    }
 
     private void ClassPicker_Changed(object sender, EventArgs e)
     {
@@ -31,9 +29,14 @@ public partial class MainPage : ContentPage
     {
         if (ClassPicker.SelectedIndex == -1)
         {
-            await DisplayAlert("Uwaga", "Proszê wybraæ klasê do losowania", "Ok");
+            await DisplayAlert("Uwaga", "ProszÄ™ wybraÄ‡ klasÄ™ do losowania", "Ok");
             return;
         }
-        await Navigation.PushAsync(new DrawPage());
+        await Shell.Current.GoToAsync(nameof(DrawPage));
+    }
+
+    private async void AddStudent_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(AddStudent));
     }
 }

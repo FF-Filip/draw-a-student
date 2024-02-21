@@ -1,12 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:LosowanieUcznia.Controls"
              x:Class="LosowanieUcznia.Views.DrawPage">
 
-    <ScrollView>
-        <VerticalStackLayout>
+    <ContentPage.Resources>
+        <StyleSheet Source="/Resources/Styles/DrawPageStyle.css"/>
+    </ContentPage.Resources>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <VerticalStackLayout
+            StyleClass="kolumna">
 
             <Label
+                StyleId="drawTitle"
                 Text="Wylosuj ucznia" />
 
             <Button
@@ -14,20 +30,40 @@
                 Clicked="LosujButton_Clicked" />
 
             <Label
+                StyleId="OutputStyle"
                 x:Name="OutputLabel"
                 />
 
-            <Button
-                Text="Zapisz listę"
-                Clicked="SaveButton_Clicked"
-                Margin="20" />
+        </VerticalStackLayout>
 
-            <Button
-                Text="Usuń listę"
-                Clicked="DeleteButton_Clicked"
-                Margin="20" />
+        <VerticalStackLayout
+            Grid.Column="1"
+            StyleClass="kolumna">
+
+            <Label
+                Text="Podaj szczęśliwy numerek" />
+            <Picker
+                x:Name="luckyNumber" />
+
+            <Label 
+                Text="Lista uczniów:" />
+
+            <CollectionView
+                x:Name="studentsCollection"
+                SelectionMode="Single"
+                SelectionChanged="StudentSelection_Changed"
+                >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <controls:StudentControl />
+                           
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
         </VerticalStackLayout>
-    </ScrollView>
+
+    </Grid>
 
 </ContentPage>

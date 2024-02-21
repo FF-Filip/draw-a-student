@@ -1,49 +1,53 @@
 ﻿using LosowanieUcznia.Models;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LosowanieUcznia.Utilities
 {
     internal class Utils
     {
-        public static void SaveItems(List<Student> studentsList)
+        public static void SaveStudents(List<Student> studentsList)
         {
             string appDataPath = FileSystem.Current.AppDataDirectory;
-            string filePath = Path.Combine(appDataPath, "DrawStudentApp.data.txt");
-            Debug.Write(filePath);
+            string filePath = Path.Combine(appDataPath, "DrawStudentApp.students_data.txt");
+            Debug.WriteLine(filePath);
 
             if (File.Exists(filePath))
                 File.Delete(filePath);
 
-            using (StreamWriter outputFile = new StreamWriter(filePath))
+            try
             {
-                foreach (Student student in studentsList)
+                using (StreamWriter outputFile = new StreamWriter(filePath))
                 {
-                    outputFile.WriteLine(student.Number + "," + student.Name + "," + student.Surname + "," + student.Class + "," + student.DrawsSinceChosen + "," + student.IsPresent);
+                    foreach (Student student in studentsList)
+                    {
+                        outputFile.WriteLine(student.Number + "," + student.Name + "," + student.Surname + "," + student.Class + "," + student.DrawsSinceChosen + "," + student.IsPresent);
+                    }
                 }
+            }
+            catch (Exception err)
+            {
+                Debug.WriteLine(err.Message);
             }
         }
 
-        public static void DeleteItems()
+        public static void DeleteStudents()
         {
             string appDataPath = FileSystem.Current.AppDataDirectory;
-            string filePath = Path.Combine(appDataPath, "DrawStudentApp.data.txt");
+            string filePath = Path.Combine(appDataPath, "DrawStudentApp.students_data.txt");
 
             if(File.Exists(filePath))
                 File.Delete(filePath);
         }
 
-        public static List<Student> ReadItems()
+        public static List<Student> ReadStudents()
         {
             List<Student> students = new List<Student>();
 
             string appDataPath = FileSystem.Current.AppDataDirectory;
-            string filePath = Path.Combine(appDataPath, "DrawStudentApp.data.txt");
+            string filePath = Path.Combine(appDataPath, "DrawStudentApp.students_data.txt");
+
+            if (!File.Exists(filePath))
+                SaveStudents(new List<Student>());
 
             try
             {
@@ -55,14 +59,64 @@ namespace LosowanieUcznia.Utilities
                     students.Add(student);
                 }
             }
-            catch (Exception ex)
+            catch (Exception err)
             {
-                Debug.WriteLine(ex.Message);
+                Debug.WriteLine(err.Message);
             }
 
             return students;
         }
 
+        public static void SaveClasses(List<string> allClasses)
+        {
+            string appDataPath = FileSystem.Current.AppDataDirectory;
+            string filePath = Path.Combine(appDataPath, "DrawStudentApp.classes_data.txt");
+
+            if (File.Exists(filePath))
+                File.Delete(filePath);
+
+            try
+            {
+                using (StreamWriter outputFile = new StreamWriter(filePath))
+                {
+                    foreach (string className in allClasses)
+                    {
+                        outputFile.WriteLine(className);
+                    }
+                }
+            }
+            catch(Exception err)
+            {
+                Debug.WriteLine(err.Message);
+            }
+        }
+
+        public static List<string> ReadClasses()
+        {
+            string appDataPath = FileSystem.Current.AppDataDirectory;
+            string filePath = Path.Combine(appDataPath, "DrawStudentApp.classes_data.txt");
+            List<string> allClasses = new List<string>();
+
+            if (!File.Exists(filePath))
+                SaveClasses(new List<string>());
+
+            try
+            {
+                IEnumerable<string> lines = File.ReadLines(filePath);
+                foreach (string line in lines)
+                {
+                    allClasses.Add(line);
+                }
+            }
+            catch (Exception err)
+            {
+                Debug.WriteLine(err.Message);
+            }
+
+            return allClasses;
+        }
+
+        /*
         public static List<Student> LoadDummyData()
         {
             List<Student> readList = new List<Student>
@@ -75,5 +129,6 @@ namespace LosowanieUcznia.Utilities
 
             return readList;
         }
+        */
     }
 }

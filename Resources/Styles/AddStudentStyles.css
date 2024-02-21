@@ -1,0 +1,28 @@
+.AddButton {
+    width: 240;
+    height: 80;
+    background: #1a3000;
+    color: #98ffa7;
+    font-size: 24;
+    margin: 40;
+    vertical-align: central;
+}
+
+.Stack {
+    vertical-align: central;
+}
+
+^contentpage {
+    background-color: #08150c;
+    padding: 20;
+}
+
+^frame {
+    min-height: 400;
+    height: 400;
+}
+
+.InputStyling {
+    background: #212121;
+    margin: 10;
+}

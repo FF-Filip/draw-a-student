@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LosowanieUcznia.Models
 {
-    internal class Student
+    public class Student
     {
         public int Number { get; set; }
         public string Name { get; set; }

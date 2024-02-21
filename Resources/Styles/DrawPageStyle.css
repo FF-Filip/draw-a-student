@@ -1,0 +1,32 @@
+﻿button {
+    width: 240;
+    height: 80;
+    background: #1a3000;
+    color: #98ffa7;
+    font-size: 24;
+    margin: 40;
+    vertical-align: central;
+}
+
+^contentpage {
+    text-align: center;
+    background-color: #08150c;
+    padding: 20;
+}
+
+#drawTitle {
+    font-size: 36;
+    margin-bottom: 20;
+    color: #fff;
+}
+
+^collectionview {
+    margin: 20;
+    color: #fff;
+}
+
+#OutputStyle {
+    font-size: 24;
+    color: green;
+    text-decoration: underline;
+}

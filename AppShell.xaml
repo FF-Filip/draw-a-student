@@ -5,10 +5,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:LosowanieUcznia.Views"
     Shell.FlyoutBehavior="Disabled">
+    
+    <Shell.Resources>
+        <StyleSheet Source="/Resources/Styles/AppBarStyles.css" />
+    </Shell.Resources>
+
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Fill"
+            StyleId="AppBarStack">
+            <Label
+                StyleId="AppBarLabel"
+                Text="System losowania uczniów"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
 
     <ShellContent
         Title="Add new student"
-        ContentTemplate="{DataTemplate views:MainPage}"
-        Route="Draw Student App" />
+        ContentTemplate="{DataTemplate views:MainPage}" />
 
 </Shell>

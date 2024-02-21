@@ -1,15 +1,73 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="LosowanieUcznia.Views.AddStudent"
              Title="AddStudent">
-    <VerticalStackLayout>
 
-        <Entry 
-            Keyboard="Chat"/>
+    <ContentPage.Resources>
+        <StyleSheet Source="/Resources/Styles/AddStudentStyles.css" />
+    </ContentPage.Resources>
 
-        <Button 
-            Text="Add student" />
+    <Grid>
 
-    </VerticalStackLayout>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Frame>
+
+            <VerticalStackLayout
+                    StyleClass="Stack">
+
+                <Entry
+                    StyleClass="InputStyling"
+                    x:Name="NumberEntry"
+                    Placeholder="Numerek"
+                    Keyboard="Numeric"
+                    MaxLength="2" />
+
+                <Entry 
+                    StyleClass="InputStyling"
+                    x:Name="NameEntry"
+                    Placeholder="Imię"
+                    TextChanged="TextEntry_Changed"/>
+
+                <Entry 
+                    StyleClass="InputStyling"
+                    x:Name="SurnameEntry"
+                    Placeholder="Nazwisko"
+                    TextChanged="TextEntry_Changed"/>
+
+                <Picker 
+                    StyleClass="InputStyling"
+                    x:Name="ClassPicker"/>
+
+                <Button 
+                    StyleClass="AddButton"
+                    Text="Dodaj ucznia"
+                    Clicked="AddNewStudent_Clicked"/>
+
+            </VerticalStackLayout>
+
+        </Frame>
+
+        <VerticalStackLayout
+            Grid.Column="1"
+            StyleClass="Stack">
+
+            <Button
+                StyleClass="AddButton"
+                Text="Dodaj nową klasę"
+                Clicked="AddNewClass_Clicked" />
+
+        </VerticalStackLayout>
+
+    </Grid>
+
 </ContentPage>
