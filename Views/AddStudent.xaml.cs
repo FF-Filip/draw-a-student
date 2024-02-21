@@ -43,12 +43,6 @@ public partial class AddStudent : ContentPage
 			{
                 await DisplayAlert("Uwaga", "Inny uczeń o takim numerku już istnieje", "OK");
                 return;
-            } 
-
-			if (editedStudent != newStudentsList.Where(s => s.Number == newStudentNumber).FirstOrDefault())
-			{
-                await DisplayAlert("Uwaga", "Inny czeń o takim numerku już istnieje", "OK");
-                return;
             }
 
             newStudentsList.Remove(editedStudent);

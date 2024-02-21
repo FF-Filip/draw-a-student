@@ -58,7 +58,7 @@ namespace LosowanieUcznia.Views
                 if (!infiniteLoopProt.Contains(studentsToDraw[index]))
                     infiniteLoopProt.Add(studentsToDraw[index]);
 
-                if (studentsToDraw[index].DrawsSinceChosen == 0 && studentsToDraw[index].IsPresent && studentsToDraw[index].Number != luckyN)
+                if (studentsToDraw[index].DrawsSinceChosen == 0 && studentsToDraw[index].Number != luckyN)
                 {
                     break;
                 } else

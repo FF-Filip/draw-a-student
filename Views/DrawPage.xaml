@@ -43,6 +43,8 @@
             <Label
                 Text="Podaj szczęśliwy numerek" />
             <Picker
+                StyleId="NumberPicker"
+                HorizontalOptions="Center"
                 x:Name="luckyNumber" />
 
             <Label 

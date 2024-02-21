@@ -30,3 +30,8 @@
     color: green;
     text-decoration: underline;
 }
+
+.kolumna label {
+    font-size: 20;
+    color: #eee;
+}
